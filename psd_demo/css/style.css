@@ -1,0 +1,114 @@
+/* css/style.css */
+/* Cách nhúng font vào hệ thống */
+/* sử dụng css3 là @font-face */
+@font-face {
+	/* đường dẫn fonts */
+	src: url('../fonts/Pacifico.ttf');
+	/* tên font, do bạn tự đặt */
+	font-family: 'Pacifico';
+}
+
+.logo {
+	font-size: 30px;
+    font-family: 'Pacifico';
+    color:  #fff;
+}
+
+.header {
+    background: #2f2f2f;
+    padding: 10px 0;
+}
+
+/* css cho nhiều selector cùng ăn 1 css
+, dựa vào dấu , ngăn cách các selector */
+.header-content, .main-content {
+    width: 80%;
+    margin: auto;
+}
+
+/* áp dụng cơ chế dàn trang
+kiểu flex cho hàng, thì khi đó các cột
+bên trong hàng sẽ tự động sắp xếp trên
+cùng 1 hàng, cho dù có thay đổi width
+của các phần tử con > 100%*/
+.row {
+    display: flex;
+}
+/* sau khi set flex cho row, thì cần
+set width tương ứng cho các col */
+.header-col {
+    width: 50%;
+}
+
+ul {
+	list-style: none;
+}
+
+/* sử dụng inline-block để cho phép 
+các phần tử đứng chung 1 hàng */
+li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+body {
+	font-family: Myriad Pro;
+	margin: 0;
+}
+
+ul li a {
+	color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.main-top {
+    background: #f1f1f1;
+    padding: 25px 0;
+}
+
+.main-top-left h3 {
+	margin: 0;
+    font-size: 24px;
+}
+
+.main-top-left {
+    width: 40%;
+    margin-right: 20px;
+}
+
+.main-top-right {
+    width: 60%;
+}
+
+.learn-more a {
+	background: #f99640;
+    text-decoration: none;
+    color: #fff;
+    padding: 8px 15px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.learn-more {
+	margin : 25px 0;
+}
+
+.main-center {
+    padding: 30px 0;
+}
+
+.main-avatar {
+    height: 150px;
+    background: #000;
+}
+
+.main-center-item {
+    width: 33.33%;
+}
+
+/* lấy selector theo trạng thái: đầu tiên,
+cuối cùng, bất kỳ khi có cấu trúc cha con;
+*/
+.main-center-item:nth-child(2) {
+    margin: 0 40px;
+}

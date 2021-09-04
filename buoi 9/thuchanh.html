@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thực hành layout</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Các bước xây dựng layout 1 trang web -->
+    <!-- 1 Xây dựng cấu trúc tổng quam của trang web đó chia thành các bố cục chính như header, main, footer -->
+    <!-- 2 Trong quá trình xây dựng cấu trúc HTML, nếu gặp cấu trúc layout dạng hàng và cột thì khai báo 
+    cấu trúc row-col -->
+    <!-- 3 Xây dựng chi tiết cho từng khối -->
+
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            This a header
+        </div>
+        <!-- END HEADER -->
+
+        <!-- Main-content -->
+        <div class="main-content">
+            <!-- Menu left -->
+            <div class="row">
+            <div class="menu-left">
+                <ul>
+                    <li>Menu</li>
+                    <li>********</li>
+                    <li>********</li>
+                    <li>********</li>
+                    <li>********</li>
+                </ul>
+            </div>
+            <!-- End-Menu left -->
+            <!-- Main -->
+            <div class="main">
+                <div class="some-text">
+                    Some text
+                </div>
+                <!-- Do khối dưới đây có cấu trúc hàng-cột nên sẽ sử dụng
+                cấu trúc row-col để xây dựng -->
+                <div class="image-text">
+                    <div class="row">
+                        <div class="col1">
+                            An image
+                        </div>
+                        <div class="col2">
+                            More text
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End-Main -->
+        </div>
+        <!-- End-Main-content -->
+    </div>
+</body>
+</html>

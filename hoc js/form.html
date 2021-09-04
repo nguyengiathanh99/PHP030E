@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form đăng nhập</title>
+    <script>
+        var obj_form = document.getElementById('form');
+        obj_form = addEventListener('submit', function () {
+            var obj_name = document.getElementById('name');
+            var name = obj_name.value;
+            var obj_password = document.getElementById('password');
+            var password = obj_password.value;
+            var obj_age = document.getElementById('age');
+            var age = obj_age.value;
+            var obj_gender_male = document.getElementById('gender-male');
+            var checked_radio = 0;
+            if (obj_gender_male.checked) {
+                var gender_male = obj_gender_male.value;
+            }
+            else {
+                checked_radio++;
+            }
+            var obj_gender_female = document.getElementById('gender-female');
+            if (obj_gender_female.checked) {
+                var gender_female = obj_gender_female.value;
+            }
+            else {
+                checked_radio++;
+            }
+
+            var error = '';
+            if (name == '') {
+                error = (' Name không được để trống');
+                obj_name.focus();
+            }
+            else if (password == '') {
+                error = ('Bắt buộc nhập mật khẩu');
+                obj_password.focus();
+            }
+            else if (age == '' || isNaN(age)) {
+                error = 'Age không được bỏ trống';
+                obj_age.focus();
+            }
+            else if ( checked_radio == 2) {
+                error = 'Phải chọn giới tính';
+                obj_gender_male.focus();
+            }
+
+            document.getElementById('error').innerHTML = error;
+            event.preventDefault();
+        }); 
+    </script>
+</head>
+
+<body>
+    <form action="" method="post" id="form">
+        <table>
+            <!-- Hàng 1 -->
+            <tr>
+                <td> Họ và tên: <span>*</span></td>
+                <td>
+                    <input type="text" id="name">
+                </td>
+            </tr>
+            <tr>
+                <td>Mật khẩu: <span>*</span></td>
+                <td><input type="password" id="password"></td>
+            </tr>
+            <tr>
+                <td> Tuổi: <span>*</span></td>
+                <td><input type="text" id="age"></td>
+            </tr>
+            <tr>
+                <td> Giới tính: <span>*</span></td>
+                <td>
+                    <input type="radio" name="gender" id="gender-male"> Nam
+                    <input type="radio" name="gender" id="gender-female"> Nữ
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Gửi thông tin">
+                    <input type="reset" value="Xóa thông tin">
+                </td>
+            </tr>
+            <p id="error" style="color: red;"></p>
+        </table>
+    </form>
+</body>
+
+</html>

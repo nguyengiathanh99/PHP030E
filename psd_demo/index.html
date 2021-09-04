@@ -1,0 +1,177 @@
+<!--
+ Các bước cắt ghép HTML CSs từ file .psd
+1 - Tạo cấu trúc thư mục như sau:
+psd_demo/
+		/index.html - file code của bạn
+		/img - chứa các ảnh cắt đc từ file .psd
+		/css - các file .css của bạn
+		/fonts - chứa các font lấy đc từ file .psd
+		/js - chứa các file .js của bạn
+2 - Tiến hành cắt các ảnh từ file .psd
+Sử dụng công cụ lấy vùng chọn, sau đó sử dụng công cụ Crop (phím C) để crop ảnh, sau đó lưu ảnh vào thư mục images mà bạn vừa tạo
++ Sử dụng phím tắt Ctrl + Alt + Z để back lại nhiều lần sau khi crop ảnh, để về màn hình ban đầu
+3 - Tiến hành lấy các fonts chữ từ file .psd
+Sử dụng công cụ Text (phím tắt - T) chọn vào vùng text muốn lấy font, các font nếu trên máy bạn chưa có thì sẽ hiển thị 1 popup báo cho bạn biết, cần lên mạng search và tải font này về, đặt vào thư mục fonts của bạn.
+thư mục đang lưu các fonts có sẵn trên máy là : C:/windows/Fonts
+
+4 - Code HTML CSS
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Demo Cắt HTML CSS từ file .psd</title>
+	<!-- Bắt buộc phải khai báo thẻ meta sau để trang của bạn có thể repsonsive đc -->
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
+	<!-- Nhúng file .css vào  -->
+	<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+	<!-- Các bước xây dựng 1 trang HTML -->
+	<!-- 1 - Phân tích trang để lấy ra bố cục như header - main - footer -->
+	<!-- 2 - Xem các bố cục có chia layout hay ko, nếu có thì xây dựng cấu trúc row-col -->
+	<!-- 3 - Đi vào từng bố cục xây dựng nội dung HTML chi tiết-->
+	<!-- 4 - Đi css -->
+	<!-- 5  - Thêm JS nếu cần -->
+	<div class="container">
+		<!-- HEADER -->
+		<div class="header">
+			<div class="header-content">
+				<!-- do bên trong đang có cấu trúc 1 hàng 2 cột, nên cần xây dựng cấu trúc row-col
+				 -->
+				 <div class="row">
+				 	<!-- Cột thứ nhất -->
+				 	<div class="logo header-col">
+				 		Bloom
+				 	</div>
+				 	<!-- Cột thứ 2 -->
+				 	<div class="menu header-col">
+				 		<ul>
+				 			<li>
+				 				<a href="#">Home</a>
+				 			</li>
+				 			<li>
+				 				<a href="#">About Us</a>
+				 			</li>
+				 			<li>
+				 				<a href="#">Services</a>
+				 			</li>
+				 			<li>
+				 				<a href="#">Portfolio</a>
+				 			</li>
+				 			<li>
+				 				<a href="#">Contact Us</a>
+				 			</li>
+				 		</ul>
+				 	</div>
+				 </div>
+			</div>
+		</div>
+		<!-- END HEADER -->
+
+		<!-- MAIN -->
+		<div class="main">
+			<div class="main-top">
+				<!-- MAIN TOP -->
+				<div class="main-content">
+					<!-- xây dựng cấu trúc row-col -->
+					<div class="row">
+						<!-- CỘT 1 -->
+						<div class="main-top-left">
+							<h3>Lorem ipsum dolor sit amet</h3>
+							<div class="des-wrap">
+								<p>
+									Vestibulum pulvinar tincidunt placerat. Nulla porta porttitor sem, a ultrices magna feugiat quis. Nam ac diam ac libero posuere lacinia eget et libero. 
+								</p>
+								<p>
+									Vestibulum pulvinar tincidunt placerat. Nulla porta porttitor sem, a ultrices magna feugiat quis. Nam ac diam ac libero posuere lacinia eget et libero. 
+								</p>
+							</div>
+							<div class="learn-more">
+								<a href="#">
+									Learn more
+								</a>
+							</div>
+						</div>
+						<div class="main-top-right">
+							<img src="img/image.jpg" alt="ảnh ko tồn tại" />
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- END MAIN TOP -->
+
+				<!-- MAIN CENTER -->
+			<div class="main-center">
+				<div class="main-content">
+					<h2>This is a Heading</h2>
+					<!--
+						xây dựng cấu trúc layout
+					-->
+					<div class="row">
+						<!-- CỘT 1 -->
+						<div class="main-center-item">
+							<div class="main-avatar"></div>
+							<h3>
+								Aliquam et iaculis sapien
+							</h3>
+							<p class="main-des">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="learn-more">
+								<a href="#">
+									Learn more
+								</a>
+							</div>
+						</div>
+
+						<!-- CỘT 2 -->
+						<div class="main-center-item">
+							<div class="main-avatar"></div>
+							<h3>
+								Aliquam et iaculis sapien
+							</h3>
+							<p class="main-des">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="learn-more">
+								<a href="#">
+									Learn more
+								</a>
+							</div>
+						</div>
+
+						<!-- CỘT 3 -->
+						<div class="main-center-item">
+							<div class="main-avatar"></div>
+							<h3>
+								Aliquam et iaculis sapien
+							</h3>
+							<p class="main-des">
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="learn-more">
+								<a href="#">
+									Learn more
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				<!-- END MAIN CENTER -->
+			<div class="main-bottom">
+				<!-- MAIN BOTOM -->
+				<div class="main-content">
+				</div>
+				<!-- END MAIN BOTTOM -->
+			</div>
+		</div>
+		<!-- END MAIN -->
+
+		<!-- FOOTER -->
+		<div class="footer"></div>
+		<!-- END FOOTER -->
+	</div>
+</body>
+</html>

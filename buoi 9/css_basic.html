@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Css căn bản</title>
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <h1> Css basic </h1>
+    <style type="text/css">
+        /* Code CSS */
+        /* Có 3 cách nhúng CSS */
+        a[href='abc.vn']{
+            color: red;
+        }
+        #person a {
+            background: red;
+        }
+
+        #p-hover:hover {
+            color: red;
+        }
+
+        ul li:first-child {
+            background: red;
+        }
+        ul li:last-child {
+            background: yellow;
+        }
+        ul li:nth-child(3) {
+            background: blue;
+        }
+
+        #a-before-after:before {
+            /* bắt buộc khai báo thuộc tính content */
+            content: 'Nội dung hiển thị trước thẻ a';
+            color: red;
+        } 
+        #a-before-after:after{
+            /* bắt buộc khai báo thuộc tính content */
+            content: 'Nội dung hiển thị sau thẻ a';
+            color: blue;
+        }
+        #p-background {
+            background-color: red;
+            background-image: url('../img/image.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        body {
+            min-height: 1000px;
+        }
+        #div-fixed {
+            background: red;
+            position: fixed;
+            bottom: 0;
+            right: 293px;
+        }
+        #div-relavtive {
+            background: blue;
+            position: relative;
+            top: 47px;
+            left: 54px;
+        }
+        #parent-absolute {
+            background: yellow;
+            height: 300px;
+            position: relative;
+        }
+        #child-absolute {
+            background: green;
+            position: absolute;
+            top: 0;
+            margin: 0;
+        }
+        #div-overflow {
+            width: 10px;
+            background: red;
+            /* overflow: hidden; */
+            /* overflow: scroll; */
+            opacity: 0.5;
+        }
+        #p-transition:hover {
+            background: red;
+        }
+        #p-transition {
+            transition: all 5s ease;
+        }
+    </style>
+    <div id="person">
+        <a> Thẻ a con thứ nhất</a>
+        <a> Thẻ a con thứ 2</a>
+        <a> Thẻ a con thứ 3</a>
+    </div>
+    <a href="abc.vn">Link.vn</a><br>
+    <a href="#">Link xyz.com</a>
+
+    <div id="p-hover">
+        hover qua thẻ p để thấy hiệu ứng
+    </div>
+
+    <ul>
+        <li> Thẻ li thứ 1</li>
+        <li> Thẻ li thứ 3</li>
+        <li> Thẻ li thứ 4</li>
+    </ul>
+
+    <a href="#" id="a-before-after"></a>
+
+    <p id="p-background"> Thẻ p với css background </p>
+
+    <!-- position -->
+    <div id="div-fixed"> Cuộn trang </div>
+    <div id="div-relavtive">Cuộn trang 1</div>
+    <div id="parent-absolute">
+        <p id="child-absolute"> Thẻ p con áp dụng absolute  </p>
+    </div>
+
+    <div id="div-overflow">
+        aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    </div>
+
+    <p id="p-transition"> Hover qua thẻ p </p>
+</body>
+</html>

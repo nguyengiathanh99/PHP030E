@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phép toán trong javascript</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+
+    <html lang="en">
+
+    <head>
+
+        <meta charset="UTF-8">
+
+        <title>Document</title>
+
+        <script>
+
+            //Áp dụng cấu trúc điều kiện: if, if ... else, if ... else if, switch ... case
+
+            function calc() {
+
+                var x = document.getElementById("num1").value;
+
+                var y = document.getElementById("num2").value;
+
+                var o = document.getElementById("operator").value;
+
+                var r;
+
+                //Kiem tra gia tri cua bien 'o'
+
+                if (o == '+')
+
+                    r = parseInt(x) + parseInt(y);
+
+                if (o == '-')
+
+                    r = parseInt(x) - parseInt(y);
+
+                //Hien thi ket qua cua phep tinh
+
+                document.getElementById("result").value = r;
+
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <table>
+
+            <tr>
+
+                <td colspan="2" style="font-weight: bold; text-align:center;">THỰC HIỆN PHÉP TÍNH</td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    X
+
+                </td>
+
+                <td>
+
+                    <input type="text" id="num1">
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    Y
+
+                </td>
+
+                <td>
+
+                    <input type="text" id="num2">
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+
+                    Phép tính
+
+                </td>
+
+                <td>
+
+                    <input type="text" id="operator"> (+ | - | * | /)
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td></td>
+
+                <td>
+
+                    <input type="button" id="calculation" value="Tính toán" onclick="calc();">
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td style="font-weight: bold;">Kết quả</td>
+
+                <td>
+
+                    <input type="text" id="result">
+
+                </td>
+
+            </tr>
+
+        </table>
+
+    </body>
+
+    </html>
+
+
+</body>
+
+</html>

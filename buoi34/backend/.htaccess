@@ -1,0 +1,7 @@
+#frontend/.access
+#+ File này được sử dụng cho việc Review URL - tạo các url thân thiện với user
+#chức năng thì bên frontend luôn cần Rewite URL,với project demo thì tùy ý
+# Bắt đầu khai báo cú pháp để có thể rewirte url dạng: gio-hang-cua-ban.html thay vì phải truy cập
+#vào url dạng mvc: index.php?controller=cart&action=index
+#phức tạp khi kết hợp với các chức năng như phân trang, tìm kiếm theo phương thức GET...
+

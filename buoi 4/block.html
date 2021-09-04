@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo bảng</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #363636;
+        }
+        .container {
+            width: 1000px;
+            border: solid 1px black;
+            margin: 0 auto;
+        }
+        .bg-green {
+            background-color: #80BB35;
+            color: white;
+            
+        }
+       #header-top {
+           height: 40px;
+           line-height: 40px;
+           /* Ẩn */
+           /* display: none; */ 
+           
+       }
+       #section,#content, #footer {
+           margin-top: 20px;
+       }
+       #footer-copyright {
+           background-color: rgb(0, 0 , 0, .2);
+       }
+
+
+       #section-aside, #section-slider, #section-promo{
+           border: 1px solid blue;
+       }
+       #section-aside {
+           float: left;
+           width: 200px;
+       }
+       #section-slider {
+           float: left;
+           width: 594px;
+       }
+       #section-promo {
+           float: right;
+           width: 200px;
+       }
+    </style>
+</head>
+<body>
+    <div id="header">
+
+        <div id="header-top" class="bg-green">
+        
+        <div class="container">Top header</div>
+        
+        </div>
+        
+        <div id="header-content" class="container">Logo | Service | Cart</div>
+        
+        <div id="header-nav" class="bg-green">
+        
+        <div class="container">Menu | Search</div>
+        
+        </div>
+        
+        </div>
+        
+        <div id="section" class="container">
+        
+        <div id="section-aside">Category</div>
+        
+        <div id="section-slider">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum pariatur, fugiat suscipit harum sed enim eos ipsam fuga praesentium obcaecati cum? Repudiandae itaque laudantium architecto? Architecto aliquid veritatis error impedit
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum pariatur, fugiat suscipit harum sed enim eos ipsam fuga praesentium obcaecati cum? Repudiandae itaque laudantium architecto? Architecto aliquid veritatis error impedit?</div>
+            <div class="section-promo">
+                promotion
+            </div>
+        </div>
+        <div style="clear:both;"></div>
+        
+        <div id="content" class="container">Content</div>
+        
+        <div id="footer" class="bg-green">
+        
+        <div id="footer-content">
+        
+        <div class="container">Content footer</div>
+        
+        </div>
+        
+        <div id="footer-copyright">
+        
+        <div class="container">Copyright</div>
+        
+        </div>
+        
+        </div>
+</body>
+</html>

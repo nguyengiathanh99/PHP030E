@@ -1,0 +1,101 @@
+<!-- demo_jquery.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo jquery</title>
+	<!-- Tích hợp Jquery vào hệ thống với 1 dòng lệnh duy nhất -->
+	<script src="jquery-3.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<h1> Demo Jquery</h1>
+	<script type="text/javascript">
+		// Chương trình jquery đầu tiên	
+		// document.ready sẽ đảm bảo code js
+		// được chạy sau cùng mà ko quan tâm đến vị trí code js của bạn
+		// window.onload = function() { == với ready
+		// 	// code js
+		// }
+		$(document).ready(function() {
+			// Tất cả logic js sẽ viết bên trong
+			console.log('Hello Word');
+		
+		// 2 - DOM - document object model
+		// Là cây cấu trúc HTML
+		// Các module chính của jquery
+		// 1 Jquery Selector
+		// Selector theo tên thẻ
+		// var a_obj = document.getElementById('link'); // lấy giá trị bằng js
+		var a_obj = $('a'); // lấy giá trị từ a viết theo jquery
+		var a_obj_2 = $('#link');
+		var a_obj_3 = $('.a-class');
+		console.log(a_obj);
+		// find - tìm tất cả các selector con/cháu... từ đối tượng cha là parent
+		var obj_parent = $('#parent');
+		var obj_chiledrend = obj_parent.find();
+		console.log(obj_chiledrend);
+		// 2 - Jquery Attribute
+		// cho phép thao tác với các Attribute của Selector
+		// Lấy ra giá trị của thuộc tính, sử dụng hàm attr() và truyền vào 1 giá trị
+		var type = $('.username-class').attr('placeholder');
+		console.log(type); // nhập text
+		var name = $('.username-class').attr('name');
+		//sét giá trị truyền 2 tham số cho hàm attr
+		$('.username-class').attr('placeholder' , 'Giá trị của placehoder mới');
+		// Xóa 1 thuộc tính bất kỳ, removerAttr(name)
+		$('.username-class').removerAttr('name'); // xóa thuộc tính name trong input
+		// kiểm tra selector có chwuas tên class hay k
+		// hassClass(): trả về
+		var is_has_class = $('input[type=text]').
+		hassClass('username-class'); //kiểm tra xem có biến abc k, ko thì trả về false, nếu có trả về true
+		// Sét css cho selector, sử dụng hàm css()
+		$('.username-class').css('backgroundColor', 'red');
+		$('.username-class').css('height', '50px');
+
+		// xóa class của selector, dùng hàm removeCLass('tên class muốn xóa')
+		// sét hoặc get giá trị cho selector
+		// dùng hàm html() hoặc text() để lấy ra giá trị
+		var h1_value = $('#h1-jquery').html();//Nội dung h1
+		// var h1_value = $('#h1-jquery').text();  
+		// Set giá trị duy nhất thì chỉ cần truyền 1 tham số duy nhất cho hàm html() hoặc text()
+		$('#h1-jquery').html('Nội dung h1 mới');
+		// get va set giá trị của input
+		var value = $('username-class'),val();
+		$('username-class').val('abcdef'); 
+		// 3 jequery dom - thao tác với cây DOM
+		// Xóa 1 phần tử
+		// $('#a-remove').remove();
+		 // thêm phần tủ vào trước hoặc sau phần tử hiện tại dùng hàm before() và after()
+		 $('#a-remove').after('<b> Thẻ b được thêm phía trước selector </b>');
+		 $('#a-remove').before('<b> Thẻ b được thêm phía trước selector </b>');
+		 // 4 - jquery event
+		 // Thao tác với các sự kiện của javascript
+		 $('a-remove').click(function() {
+		 	alert('Click thẻ a');
+		 });
+		 // hover qua thẻ a
+		 $('#a-remove').mouseenter(function() {
+		 	$(this).css('color', 'red');
+		 });
+		  $('#a-remove').mouseenter(function() {
+		 	$(this).css('color', '#000');
+		 });
+
+		});
+
+	</script>
+	<a id="a-remove"> Thẻ a áp dụng jquery remove</a>
+	<h1 id="h1-jequery"> Nội dung h1</h1>
+	<input type="text" name="username" placeholder="Nhập text" class="username-class">
+
+	<!-- 3 Jequery DOM: có thể thêm phần tử xóa phần tử -->
+	
+	<a href="#" id="link"> Click thẻ a để hiển thị log </a>
+	<div id="parent">
+		<p>Thẻ p1</p>
+		<p>Thẻ p2</p>
+		<p>Thẻ p3</p>
+		<a> Thẻ a</a>
+	</div>
+</body>
+</html>

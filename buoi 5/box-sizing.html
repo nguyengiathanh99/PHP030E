@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box-sizing</title>
+    <style>
+        /* ko có box-sizing */
+        .div1 {
+            width: 300px;
+            height: 100px;
+            border: solid 1px blue;
+        }
+        .div2 {
+            width: 300px;
+            height: 100px;
+            padding: 50px;
+            border: solid 1px red;
+        }
+        .div3 {
+            width: 300px;
+            height: 100px;
+            border: solid 1px blue;
+            box-sizing: border-box;
+        }
+        .div4 {
+            width: 300px;
+            height: 100px;
+            padding: 50px;
+            border: solid 1px red;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="div1"> Khối 1 </div>
+    <div class="div2"> Khối 2 </div>
+    <div class="div3"> Khối 3 </div>
+    <div class="div4"> Khối 4  </div>
+</body>
+</html>

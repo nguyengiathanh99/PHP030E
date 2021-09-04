@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+    <!-- <script>
+        alert("Xin chào buổi tối");
+    </script> -->
+    <!-- <script src="script.js"></script> -->
+    <script>
+        function add(){
+              // Khai báo 3 biến x,y,z
+        var x;
+        var y;
+        var z;
+
+        // lấy dữ liệu từng input của người dùng nhập vào
+        // gán các giá trị là x, y, z
+        x = document.getElementById("num1").value;
+        y = document.getElementById("num2").value;
+        // chuyển kiểu từ kí tự sang số nguyên
+        z = parseInt(x) + parseInt(y);
+        document.getElementById("result").value = z;
+        }
+      
+    </script>
+</head>
+<body>
+    <!-- <script>
+        document.write("Hello PHP0320!");
+    </script>
+    <button onclick="test();">Click me</button> -->
+    X = <input type="text" id="num1">
+    <br>
+    Y = <input type="text" id="num2">
+    <br>
+    <input type="button" value="X + Y" onclick="add();">
+    <br>
+    Kết quả <input type="text"  id="result"> 
+</body>
+</html>

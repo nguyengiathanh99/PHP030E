@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo_regular_expressstion</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // var regex = /\.com$/;
+        // var test = regex.test('hello.org');
+        // console.log(test);
+        // var test1 = regex.test('hello.com');
+        // console.log(test1);
+        var regex = /\.com$/;
+        console.log(regex.test('Hello.org'));
+        console.log(regex.test('Hello.com'));
+
+        var regex = /abc/;
+        var a = regex.test('Hello Nguyen Gia Thanh abc');
+        console.log(a);
+        var b = regex.test('Hello acb');
+        console.log(b);
+
+        var regex1 = /abc/;
+        var a1 = regex1.exec('Hello abc abc 123');
+        console.log(a1);
+
+        var regex2 = /\d/;
+        console.log(regex2.test('Hello Nguyen Gia Thanh'));
+        console.log(regex2.test('Hello Nguyen Gia Thanh 12345'));
+    </script>
+</body>
+</html>

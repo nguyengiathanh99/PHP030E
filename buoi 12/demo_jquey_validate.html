@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Jquery validate</title>
+    <!-- Là 1 thư viện viết dựa trên Jquery, cho phép validate theo kiểu realtime - thông báo lỗi
+    ngay khi user nhập sai mà chưa cần submit form -->
+    <!-- Để tích hợp Jquery validate cần tải file tương ứng là jquery.validate.min.js-->
+    <script text="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script text="text/javascript" src="js/jquery.validate.min.js"></script>
+    <style>
+        span {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <!-- Jqueryvalidate sẽ check validate dựa vào thuộc tính name của input, nên cần bắt buộc 
+    phải khai báo thuộc tính name cho input -->
+   <form action="" id="form">
+    Name:
+    <input type="text" name="name" value=""><br>
+    Age:
+    <input type="text" name="age" value=""><br>
+    <input type="submit" value="Check validate">
+   </form> 
+   <script type="text/javascript">
+        $(document).ready(function(){
+            // Tạo 1 đối tượng lưu các thông tin khi xử lý validate
+
+            var obj_validate = {
+                // Cho phép thay đổi vị trí  tùy ý muốn hiển thị thông báo lỗi
+                errorPlacement:function(error, element) {
+                    error.insertAfter(element);
+                    error.wrap("<span class = 'red'>");
+                },
+                
+                // Thuộc tính rules là nơi khai báo các rule validate (ví dụ k dc để trống, số....)
+                rules: {
+                    name: {
+                        required: true
+                    },
+                    age: {
+                        required: true,
+                        number: true,
+                        min: 10,
+                        max: 20
+                    }
+                },
+
+                // custom lại message hiển thị lỗi theo ý của bạn
+                messages: {
+                    name: {
+                        required:" Không được để trống trường name"
+                    },
+                    age: {
+                        required: " Không dc để trống age",
+                        number: "phải nhập số",
+                        min:"Tối thiểu là 10",
+                        max: " tối đa là 20"
+                    }, 
+                 },
+            };
+            // Gọi hàm validate của thư viện jquery validate
+            $('#form').validate(obj_validate);
+        });
+   </script>
+</body>
+</html>

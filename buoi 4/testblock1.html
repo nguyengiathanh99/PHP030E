@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Test block </title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+            color: #363636;
+        }
+        .container {
+            border: solid 1px black;
+            width: 90%;
+            margin: 0 auto;
+        }
+        .bg-green {
+            background-color: green;
+            color: white;
+        }
+        #header-top {
+            height: 40px;
+            line-height: 40px;
+        }
+        #section, #content, #footer {
+            margin-top: 20px;
+        }
+        #section-top, #section-body {
+            border: solid 1px blue;
+        }
+        #section-top {
+            float: left;
+            width: 20%;
+            margin-left: 68px;
+        }
+        #section-body {
+            float: left;
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div id="header-top" class="bg-green">
+            <div class="container"> Top header </div>
+        </div>
+        <div id="header-body" class="container"> Logo | Service | Cart </div>
+        <div id="header-footer" class="bg-green">
+            <div class="container"> Menu | Search </div>
+        </div>
+    </div>
+    <div id="section">
+        <div id="section-top" class="container">Category</div>
+        <div id="section-body" class="container"> Lorem ipsum dolor sit,
+             amet consectetur adipisicing elit. Aut dolorem porro dignissimos, nisi delectus optio. Numquam labore expedita magni odit similique,
+             quas corporis at ullam incidunt cum tenetur aliquam sunt!</div>
+           
+    </div>
+    <div style="clear:both;"></div>
+    <div id="content" class="container"> Content</div>
+    <div id="footer" class="bg-green">
+        <div id="footer-top" class="container"> Content footer </div>
+        <div id="footer-body" class="container"> Copyright </div>
+    </div>
+</body>
+</html>

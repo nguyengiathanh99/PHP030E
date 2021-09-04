@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Jquery UI</title>
+    <!-- Jquery UI - 1 thư viện miễn phí dc viết dựa trên jquery, cung cấp các ứng dụng, widget, hiệu ứng nâng cao 
+    hơn so với jquery -->
+    <!-- Để cài đặt Jquery UI cần tải về và sử dụng 2 file sau -->
+    <!-- Jquery-ui.min.css -->
+    <!-- Jquery-ui.min.js -->
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+</head>
+
+<body>
+    <script>
+        // CÚ pháp function(){} tương đương với 
+        $(function () {
+            $("#datepicker").datepicker();
+        });
+    </script>
+    <p>Date: <input type="text" id="datepicker"></p>
+
+    <!-- Dialog -->
+    <script>
+        $(function () {
+            $("#dialog").dialog();
+        });
+    </script>
+    <div id="dialog" title="Basic dialog">
+        <p>This is the default dialog which is useful for displaying information. The dialog window can be moved,
+            resized and closed with the 'x' icon.</p>
+    </div>
+
+    <!-- Autocomplete -->
+    <script>
+            $( function() {
+    var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+    $( "#tags" ).autocomplete({
+                source: availableTags
+    });
+  } );
+    </script>
+    <div class="ui-widget">
+        <label for="tags">Tags: </label>
+        <input id="tags">
+      </div>
+</body>
+
+</html>

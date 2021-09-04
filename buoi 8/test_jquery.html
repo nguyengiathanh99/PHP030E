@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Học jquery </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <h1> Demo jquery </h1>
+    <script>
+        $(document).ready(function(){
+            console.log("Hello Word");
+
+            var a_obj_1 = $("a");
+            var a_obj_2 = $("#link");
+            var a_obj_3 = $(".class");
+            console.log("a_obj");
+
+            var obj_family = $("#parent");
+            var obj_children = obj_family.find();
+            console.log(obj_children); 
+
+            var type = $(".username-class").attr("placeholder");
+            console.log(type);
+
+            $(".username-class").removeAttr("name");
+
+            $(".username-class").css("background-color", "red");
+            $(".username-class").css("height" , "50px");
+
+            var h1_value = $("#h1_jquery").html();
+            $("#h1_jquery").text("Nội dung mới");
+           
+           $("#click-link").click(function(){
+               alert("Bạn đã click thành công");
+           });
+           $("click-link").mouseenter(function(){
+               $(this).css("color" , "red");
+           });
+        });
+    </script>
+    <a href="#" id="link"> Click thẻ a để hiển thị log </a><br>
+    <a href="#" id="click-link"> Click me </a>
+    <h1 id="h1_jquery">Nội dung văn bản</h1>
+    <input type="text" name="username" placeholder="Nhập text" class="username-class">
+    <div id="parent">
+        <p>1</p>
+        <p>2</p>
+        <p>3</p>
+    </div>
+</body>
+</html>

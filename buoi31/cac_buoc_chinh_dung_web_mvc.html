@@ -1,0 +1,283 @@
+<!-- 
+    CÁC BƯỚC CHÍNH DỰNG 1 WEB MVC TỪ ĐẦU
+    1 - Chuẩn bị giao diện tĩnh (HTML) cho tất cả các trang 
+    + Giao diện backend: phục vụ cho nhà quản trị, cho phép CRUD các chức năng chính của trang,
+    do chỉ hướng tơi 1 nhóm nhỏ người dùng nên giao diện backend sẽ ko quan trọng bằng frontend
+    dùng Bootstrap là chính
+    + Giao diện frontend: hướng tới user
+    2 - Phân tích giao diện trên có được CSDL: đi lần lượt từng trang giao diện tĩnh để phân tích
+    xác định các bảng, xác định các trường
+    - Khi xác định 1 bảng cần check qua tất cả các giao diện để tìm xem còn thông tin nào liên quan
+    đến bảng đó ko
+    + Bảng menu: bảng này là tùy ý dựng hay không
+    Tạo ra menu động. Các trường có thể có của bảng này:
+    Thường bảng nào cx sẽ có 4 trường sau
+
+    (database menu trong trang chủ)
+    id: khóa chính
+    name: tên các menu con, VARCHAR(50)
+    url: link cho các menu con, VARCHAR(255)
+    muốn làm menu con phải có: parent_id: id cha của menu con hiện tại, INT(11)
+    status: trạng thái ẩn/hiện, TYNYINT
+    created_at: TIMESTAMP, default CURRENT_TIMESTAMP
+    updated_at: DATETIME
+
+    (database của  sản phẩm)
+    + Bảng products: chứa các thông tin của sản phẩm, tên bảng thường sẽ đặt ở số nhiều
+        id: khóa chính, AUTO_INCREMENT
+        category_id = id INT(11) của bảng danh mục tương ứng, thể hiện cho mối quan hệ: 1 sản phẩm thuộc về
+    1 danh mục nào đó
+    tên khóa ngoại đặt theo format sau:
+    <tên bảng liên kết ở dạng số ít>_id
+        avatar: lưu tên file ảnh, VARCHAR(100)
+        title: tên sản phẩm, VARCHAR(100)
+        price: giá sản phẩm, INT(10)
+        content: chi tiết của sản phẩm, TEXT
+        amount: số lượng sản phẩm trong kho, trường này sẽ ko thể hiện ở giao diện, do tư duy
+        của bạn INT(4)
+        summary: mô tả ngắn cho sản phẩm, VARCHAR(255)
+        seo_title: seo trong tiêu đề của sản phẩm, VARCHAR(255)
+        seo_description: seo cho phần mô tả nội dung của bạn VARCHAR(255)
+        seo_keywords: seo các từ khóa để tìm kiếm ra sản phẩm của bạn VARCHAR(255)
+        status: trạng thái, TINYINT: 0 - ẩn, 1 - hiển thị
+        created_at
+        updated_at
+
+        (database trong bảng tin tức)
+        + news: bảng lưu các thông tin liên quan đến tin tức
+        id
+        category_id: liên kết tới bảng categories, 1 tin tức thuộc về 1 danh mục nào
+        avatar (vì có ảnh): lưu tên file ảnh, VARCHAR(150)
+        title: tên tin tức, VARCHAR(150)
+        summary: mô tả ngắn cho tin tức, TEXT
+        content: nội dung chi tiết, TEXT
+        seo_title: seo cho tiêu đề tin tức, VARCHAR(255)    
+        seo_description: seo cho phần mô tả tin tức, VARCHAR(255)
+        status
+        created_at
+        updated_at
+    + Bảng categories: bảng lưu các thông tin danh mục, ngoài ra các hệ thống có cả sản phẩm
+    sử dụng 1 trường để phân biệt đâu là danh mục của sản phẩm, là danh mục của tin tức
+        id 
+        name: tên danh mục VARCHAR(150)
+        avatar: lưu tên file ảnh VARCHAR(50)
+        description: mô tả chi tiết, TEXT
+        type: loại danh mục, nếu = 0 - Danh mục của sản phẩm, nếu = 1 - danh mục kiểu tin tức
+        lưu kiểu, TINYINT(1)
+        status
+        created_at
+        updated_at
+
+        (database trong bảng user: bảng thông tin)
+        + Bảng users: lưu các thông tin về user trên toàn hệ thống
+        id
+        avatar: lưu tên file ảnh, VARCHAR(150)
+        first_name: VARCHAR(150)
+        last_name: VARCHAR(150)
+        last_login: lưu lại thời gian đăng nhập cuối cùng DATETIME do trường này lưu thủ công
+        Email: lưu thông tin email VARCHAR(150)
+        facebook: lưu link fb user, VARCHAR(150)
+        jobs: lưu thông tin nghề nghiệp của user, VARCHAR(100)
+        (có thêm 2 trường nữa từ bảng login là:
+        username: thông tin đăng nhập, VARHCHAR(100)
+        password: lưu mật khẩu, VARCHAR(150)
+        )
+        status
+        created_at
+        updated_at
+
+
+        (database trong bản đơn hàng)
++ Bảng orders: bảng lưu thông tin đơn hàng trên hệ thống, bảng này liên quan đến nghiệp vụ trang bán hàng
+        id
+        fullname: lưu thông tin người mua hàng, VARCHAR(100)
+        address: địa chỉ người mua hàng VARCHAR(150)
+        mobile: sdt người mua hàng, VARCHAR(255)
+        email: email người mua hàng VARCHAR(20)
+        user_id: id của user, liên kết với bảng users, nếu user đăng nhập thì khi mua hàng
+        tự động điền các thông tin vào form đặt hàng luôn
+        note: ghi chú thêm từ user, TEXT
+        price_total: tổng giá trị đơn hàng, INT(11)
+        payment_status:nếu = 0 - chưa xử lý, nếu = 1 - Đã thanh toán
+        created_at:
+        updated_at:
+
+        (database: order_details )
++ Bảng order_delails: mô tả 1 đơn hàng đã mua bn sản phẩm và số lượng mỗi sản phẩm là bao nhiêu
+của bảng orders và order_details: 1 đơn hàng có thể có nhiều sản phẩm, 1 orders có thể nhiều
+order_deltails
+        order_id: id của đơn hàng tương ứng, liên kết với bảng orders
+        product_id: id của sản phẩm trong đơn hàng trên, liên kết với bảng products
+        quanlity: số lượng sản phẩm trong đơn hàng
+
+3 - Sau khi phân tích được các bảng, đi tạo CSDL, có thể tạo theo 2 cách sau, tạo tên CSDL: php0320e_project
+- Dùng giao diện để tạo (PHPMyadmin)
+- Dùng câu truy vấn SQL để tạo, đã cung cấp file chứa các câu truy vấn tạo bảng trên: file_create_db.html
+
+    Tạo Database: 
+    CREATE DATABASE IF NOT EXISTS php0320e_project
+    CHARACTER SET utf8 COLLATE utf8_general_ci
+
+    Tạo Table
+    
+#categories
+CREATE TABLE IF NOT EXISTS categories (
+id INT(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100) NOT NULL COMMENT "Tên danh mục",
+type TINYINT(3) DEFAULT 0 COMMENT "Loại danh mục: 0 - Product, 1 - News",
+avatar VARCHAR(100) COMMENT "Tên file ảnh danh mục",
+description TEXT COMMENT "Mô tả chi tiết cho danh mục",
+status TINYINT(3) DEFAULT 0 COMMENT "Trạng thái danh mục: 0 - Inactive, 1 - Active",
+created_at TIMESTAMP DEFAULT  CURRENT_TIMESTAMP COMMENT "Ngày tạo danh mục",
+updated_at DATETIME COMMENT "Ngày cập nhật cuối"
+);
+
+
+#products
+CREATE TABLE IF NOT EXISTS products(
+id INT(11) PRIMARY KEY AUTO_INCREMENT,
+category_id INT(11) COMMENT "Id của danh mục mà sản phẩm thuộc về, là khóa ngoại liên kết với bảng categories",
+title VARCHAR(100) COMMENT "Tên sản phẩm",
+avatar VARCHAR(100) COMMENT "Tên file ảnh sản phẩm",
+price INT(11) COMMENT "Giá sản phẩm",
+amount INT(11) COMMENT "Số lượng sản phẩm trong kho",
+summary VARCHAR(100) COMMENT "Mô tả ngắn cho sản phẩm",
+content TEXT COMMENT "Mô tả chi tiết cho sản phẩm",
+status TINYINT(3) DEFAULT 0 COMMENT "Trạng thái danh mục: 0 - Inactive, 1 - Active",
+seo_title VARCHAR(100) COMMENT "Từ khóa seo cho title",
+seo_description VARCHAR(100) COMMENT "Từ khóa seo cho phần mô tả",
+seo_keywords VARCHAR(100) COMMENT "Các từ khóa seo",
+created_at TIMESTAMP DEFAULT  CURRENT_TIMESTAMP COMMENT "Ngày tạo",
+updated_at DATETIME COMMENT "Ngày cập nhật cuối"
+);
+
+#news
+CREATE TABLE IF NOT EXISTS news(
+id INT(11) PRIMARY KEY AUTO_INCREMENT,
+category_id INT(11) COMMENT "Id của danh mục mà tin tức thuộc về, là khóa ngoại liên kết với bảng categories",
+title VARCHAR(100) NOT NULL COMMENT "Tiêu đề tin tức",
+summary VARCHAR(100) COMMENT "Mô tả ngắn cho tin tức",
+avatar VARCHAR(100) COMMENT "Tên file ảnh tin tức",
+content TEXT COMMENT "Mô tả chi tiết cho sản phẩm",
+status TINYINT(3) DEFAULT 0 COMMENT "Trạng thái danh mục: 0 - Inactive, 1 - Active",
+seo_title VARCHAR(100) COMMENT "Từ khóa seo cho title",
+seo_description VARCHAR(100) COMMENT "Từ khóa seo cho phần mô tả",
+seo_keywords VARCHAR(100) COMMENT "Các từ khóa seo",
+created_at TIMESTAMP DEFAULT  CURRENT_TIMESTAMP COMMENT "Ngày tạo",
+updated_at DATETIME COMMENT "Ngày cập nhật cuối"
+);
+
+#orders
+CREATE TABLE IF NOT EXISTS orders(
+id INT(11) PRIMARY KEY AUTO_INCREMENT,
+user_id INT(11) COMMENT "Id của user trong trường hợp đã login và đặt hàng, là khóa ngoại liên kết với bảng users",
+fullname VARCHAR(100) COMMENT "Tên khách hàng",
+address VARCHAR(100) COMMENT "Địa chỉ khách hàng",
+mobile INT(11) COMMENT "SĐT khách hàng",
+email VARCHAR(100) COMMENT "Email khách hàng",
+note TEXT COMMENT "Ghi chú từ khách hàng",
+price_total INT(11) COMMENT "Tổng giá trị đơn hàng",
+payment_status TINYINT(2) COMMENT "Trạng thái đơn hàng: 0 - Chưa thành toán, 1 - Đã thành toán",
+created_at TIMESTAMP DEFAULT  CURRENT_TIMESTAMP COMMENT "Ngày tạo đơn",
+updated_at DATETIME COMMENT "Ngày cập nhật cuối"
+);
+
+#order_details
+CREATE TABLE IF NOT EXISTS order_details(
+order_id INT(11) COMMENT "Id của order tương ứng, là khóa ngoại liên kết với bảng orders",
+product_id INT(11) COMMENT "Id của product tương ứng, là khóa ngoại liên kết với bảng products",
+quantity INT(11) COMMENT "Số sản phẩm đã đặt"
+);
+#users
+CREATE TABLE IF NOT EXISTS users (
+id INT(11) PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(100) COMMENT "Tên đăng nhập",
+password VARCHAR(100) COMMENT "Mật khẩu đăng nhập",
+first_name VARCHAR(100)  COMMENT "Fist name",
+last_name VARCHAR(100)  COMMENT "Last name",
+phone  int(11) COMMENT 'SĐT user' ,
+address  varchar(100) COMMENT 'Địa chỉ user' ,
+email  varchar(100)   COMMENT 'Email của user' ,
+avatar VARCHAR(100)  COMMENT "File ảnh đại diện",
+jobs VARCHAR(100)  COMMENT "Nghề nghiệp",
+last_login DATETIME COMMENT "Lần đăng nhập gần đây nhất",
+facebook VARCHAR(100) COMMENT "Link facebook",
+status TINYINT(3) DEFAULT 0 COMMENT "Trạng thái danh mục: 0 - Inactive, 1 - Active",
+created_at TIMESTAMP DEFAULT  CURRENT_TIMESTAMP COMMENT "Ngày tạo",
+updated_at DATETIME COMMENT "Ngày cập nhật cuối"
+);
+
+4- Xem sơ đồ quan hệ của các bảng sử dụng 1 chức năng của PHPMyadmin, phục vụ làm tài liệu 
+để báo cáo:
++ Chọn CSDL muốn xem
++ Trong tab More, click Desginer
+Để chức năng này hiển thị mối liên kết giữa các bảng, khi tạo bảng cần thể hiện khóa ngoại 1
+cách rõ ràng. Với các câu truy vấn SQL: FOREIGN KEY...
+5 - Tạo cấu trúc thư mục MVC cho backend và frondend
+Với project demo thì đang tách cấu trúc thư mục của backend và frontend
+Tạo các thư mục sau:
+backend/
+       /assets: chứa các thông tin liên quan đến frontend
+                Các file/thư mục trong thư mục assets đếm từ template backend của bạn
+                /css
+                /js
+                /images
+                /webfonts...fonts
+        /configs: chứa các cấu hình hệ thống
+                /Database.php: class chứa các hằng số kết nối CSDL theo cơ chế PDO
+        /controllers: chứa các class controller
+                    /CategoryController.php
+        /models:
+                /Category.php
+        /views:
+                /layouts:
+                        /main.php
+                /categories
+                            /index.php
+                            /create.php
+                            /update.php
+                            /detail.php
+        /index.php: file index gốc của ứng dụng
+        /.htaccess: rewrite url, thường dùng bên frontend
+Với cấu trúc bên frontend: hoàn toàn tương tự cấu trúc backend
+-->
+
+<!-- BACKEND:
+    1 - Demo chức năn đăng ký/đăng nhập
+    * Giao diện của các chức năng này sẽ khác so với file layout chính của backend ->
+    tạo 1 file layout khác chỉ dùng cho các chức năng mà user chưa đăng nhập vào backend ->
+    1 website
+    * Có thể có nhiều file layout
+    + CHức năng đăng ký:mật khẩu phải mã hóa trước khi lưu vào CSDL, để demo thì dùng cơ chế
+    mã hóa md5, thực tế cần dùng các cơ chế mã hóa bảo mật hơn. Cần check thêm chỉ cho phép
+    đăng ký username chưa tồn tại trên hệ thống
+    + Chức năng đăng nhập: khi kiểm tra login, sử dụng md5 để lấy chuỗi mã hóa của mật khẩu
+    trước khi kiểm tra trong CSDL
+    * (Chức năng thêm) Chức năng quên mật khẩu: có 1 form, có 1 input duy nhất là nhập email.
+    Khi user nhập email, gửi 1 mail chứa nội dung: sẽ chứa 1 link là url tới trang của bạn để
+    reset mật khẩu:
+     http://localhost/mvc/index.php?controller=user&action=reset_password&email=<email-mã-hóa-md5>
+    * Khi gửi mail mà có chứa url tới trang của bạn, cần phải set url có đầy đủ cả domain
+    để lấy được cá thông số của domain
+    $_SERVER
+    *  (Chức năng thêm): Quản lý đơn hàng: có 2 bảng liên quan order, order_details, xây dựng
+    chức năng CRUD cho đơn hàng
+    * Về chức năng sửa đơn hàng: cho phép chỉ sửa được thông tin người mua hàng, sửa trạng thái
+    của đơn hàng...
+    * (Chức năng thêm): Chức năng thống kê:
+    + Thống kê đơn hàng: tổng số đơn hàng trên hệ thống (SELECT COUNT ID), thống kê đơn hàng
+    theo trạng thái: đã thanh toán, chưa thanh toán
+    + Thống kê sản phẩm: sản phẩm bán chạy nhất (COUNT theo product_id theo từng đơn hàng)
+    tổng số sản phẩm đang có trên hệ thống
+    + Thống kê tin tức: tổng số tin tức đang có trên hệ thống
+    * (Chức năng thêm) Phân quyền: chia quyền cho các user trên hệ thống backend
+    + Có thể thêm trường role vào bảng users:
+    + 0 : super admin - quyền cao nhất
+    + 1 : admin- quyền thấp hơn super
+    + 2 : sales - chỉ thao tác được với các đơn hàng
+    + 3 : editor - CRUD sản phẩm, CRUD tin tức.... 
+    * Cần tạo thêm  1 bảng roles: CRUD các quyền trên hệ thống
+
+    2 - Demo chức năng tìm kiếm sản phẩm
+
+-->

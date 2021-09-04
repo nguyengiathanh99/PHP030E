@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập</title>
+</head>
+<body>
+    <!-- Xử lý validate và hiển thị các thông tin từ Form -->
+    <form  method="post" id="form">
+        Name: <input type="text" value="" placeholder="" name="" id="name"><br>
+        Age: <input type="number" id="age"><br>
+        Birthday: <input type="date" id="birthday"><br>
+        Gender: <input type="radio" value="0" name="gender" id="gender-female"> Female
+        <input type="radio" value="1" name="gender" id="gender-male"> Male <br> 
+        <input type="submit" value="Show info" >
+        <input type="reset" value="Reset">
+    </form>
+    <!-- Khai báo 2 thẻ h3 chứa thông tin lỗi và thông tin kết quả -->
+    <h3 id="error " style="color: red;"></h3>
+    <h3 id="result " style="color: green;"></h3>
+    <script type="text/javascript">
+         // GỌi sự kiện submit trên form
+        //  Lấy nguyên cái khối form
+         var form_obj = document.getElementById('form');
+         // Gọi sự kiện trên đối tượng vừa lấy được
+         form_obj.addEventListener('submit' , function() {
+             //code trong hàm callback
+
+             // biến chứa thông tin lỗi
+             var error = '';
+             // biến chứa thông tin hiển thị
+             var result = '';
+              // lấy ra các giá trị cần hiển thị
+             var name = document.getElementById('name').value;
+             var age = document.getElementById('age').value;
+             var birthday = document.getElementById('birthday').value;
+             // Bỏ qua radio
+             // Check validate dữ liệu
+            // Name và age ko đc để trống
+            // age phải là số
+            if(name ==  '' || age == '') {
+                error = ' Name hoặc age ko được để trống'; 
+            }
+            else if ( isNaN(age) == true) {
+                error = 'Age phải là số';
+            } else {
+                //Xử lý hiển thị ra màn hình
+                result += " Name: " + name + "<br/>";
+                result += " Age: " + age + "<br/>";
+            }
+            // Hiển thị các biến error và reslut ra màn hình: vào thẻ h3
+            var obj_error = document.getElementById('error');
+            obj_error.innerHTML = error;
+            var obj_result = document.getElementById('result');
+            obj_result.innerHTML = result;
+            // Ngăn ngừa trag tải lại khi submit form bằng cách sau đây
+            // Biến eventlaf biến dc js tự động sinh ra khi nằm trong hàm callback của 1 sự kiện
+            event.preventDefault();
+         })
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+#container {
+    border: 10px solid green;
+}
+.logo {
+    text-align: center;
+    margin-top: 20px;
+}
+img {
+    width: 200px;
+    height: 100px; 
+}
+.bg-dark {
+    background: black;
+    height: 40px;
+}
+.menu ul li {
+    display: inline-block;
+    margin: 12px 10px;
+    
+}
+.menu ul li a {
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+}
+.main {
+    height: 350px;
+    
+}
+
+.content-footer {
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+span {
+    color: red;
+}
+.form-dk {
+    padding: 20px;
+}

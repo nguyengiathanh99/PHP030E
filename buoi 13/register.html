@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">Header
+            <ul>
+                <li>
+                    <a href="home.html">
+                        Trang chủ
+                    </a>
+                </li>
+                <li>
+                    <a href="category.html">
+                        Danh mục
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html">
+                        Login
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="register.html">
+                        Đăng ký tài khoản
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <h1>Đây là register</h1>
+            <h2> Form đăng ký tài khoản </h2>
+            <form action="" method="post" id="form">
+                <table>
+                    <!-- Hàng 1 -->
+                    <tr>
+                        <td> Họ và tên: *</td>
+                        <td>
+                            <input type="text" id="name">
+                        </td>
+                        
+                    </tr>
+                    <!-- Hàng 2 -->
+                    <tr>
+                        <td> Tuổi: * </td>
+                        <td>
+                            <input type="text" id="age">
+                        </td>
+                    </tr>
+                    <!-- Hàng 3 -->
+                    <tr>
+                        <td> Email: * </td>
+                        <td>
+                            <input type="text" id="email">
+                        </td>
+                    </tr>
+                    <!-- Hàng 4 -->
+                    <tr>
+                        <td>Giới tính: *</td>
+                        <td>
+                            <input type="radio" name="gender" id="gender-male" value="male"> Nam
+                            <input type="radio" name="gender" id="gender-female" value="female"> Nữ
+                        </td>
+                    </tr>
+                    <!-- Hàng 5 -->
+                    <tr>
+                        <td>Nghề nghiệp: *</td>
+                        <td>
+                            <input type="checkbox" id="job-dev" value="dev"> Dev
+                            <input type="checkbox" id="job-tester" value="tester"> Tester
+                        </td>
+                    </tr>
+                    <!-- Hàng 6 -->
+                    <tr>
+                        <td>Chọn khóa học</td>
+                        <td>
+                            <select name="" id="course">
+                                <option value="none">--Vui lòng chọn--</option>
+                                <option value="PHP">PHP</option>
+                                <option value="JS">JS</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <!-- Hàng 7 -->     
+                    <tr>
+                        <td>Mật khẩu:*</td>
+                        <td>
+                            <input type="password" id="password">
+                        </td>
+                    </tr>
+                    <!-- Hàng 8 -->
+                    <tr>
+                        <td> Nhập lại mật khẩu: *</td>
+                        <td>
+                            <input type="password" id="confirm-password">
+                        </td>
+                    </tr>
+                    <!-- Hàng 9 -->
+                    <tr>
+                            <td> Ghi chú thêm: * </td>
+                            <td>
+                                <!-- Giữa nội dung của cặp thẻ textarea sẽ k dc bất kỳ 1 khoảng trắng
+                                nào, nếu k con trỏ chuột khi đứng tại textarea sẽ k nằm ở vị trí bắt đầu -->
+                                <textarea  id="note" cols="20" rows="10"></textarea>
+                            </td>
+                    </tr>
+                    <!-- Hàng 10 -->
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Gửi thông tin">
+                            <input type="reset" value="Xóa thông tin">
+                        </td>
+                    </tr>
+                </table>
+            </form> 
+        </div>
+        <div class="footer">Footer</div>
+    </div>
+    <!-- Khai báo vùng chờ hiện thị lỗi -->
+    <h3 id="error" style="color: red;"></h3>
+    <script type="text/javascript">
+        // Xử lý submit form, nếu ko có lỗi thì sẽ gửi email dựa theo trường email
+        var obj_form = document.getElementById('form');
+        // Gắn sự kiện submit vào form:  addevent gắn dc 2 sự kiện
+        obj_form.addEventListener('submit' , function(){
+            // Lấy đối tượng của từng input và lấy giá trị tương ứng
+            // Lấy ra đối tượng name
+            var obj_name = document.getElementById('name');
+            // lấy giá trị thuộc tính name
+            var name = obj_name.value;
+            // Lấy ra đối tượng age
+            var obj_age = document.getElementById('age');
+            // lấy ra giá trị thuộc tính age
+            var age = obj_age.value;
+            // Lấy ra đối tượng email
+            var obj_email = document.getElementById('email');
+            // lấy ra giá trị email
+            var email = obj_email;
+            // Lấy đối tượng giới tính
+            //  Lấy ra radio nam trước
+            var obj_gender_male = document.getElementById('gender-male');
+            // trc khi lấy dc giá trị của radio, cần kiểm tra radio phải dc tích vào 
+           var count_checked_radio = 0
+            if (obj_gender_male.checked ) {
+                var gender_male = obj_gender_male.value;
+            }
+            else {
+                count_checked_radio++;
+            }
+            // Lấy ra radio Nữ
+            var obj_gender_female = document.getElementById('gender-female');
+            if (obj_gender_female.checked) {
+                var gender_female = obj_gender_female.value;
+            }
+            else {
+                count_checked_radio++;
+            }
+
+            // Lấy ra đối tượng khóa học
+            var obj_couse = document.getElementById('course');
+            var course = obj_couse.value;
+
+            // Lấy đối tượng mật khẩu
+             var obj_password = document.getElementById('password');
+            var password = obj_password.value;
+
+            // Lấy đối tượng lặp lại mật khẩu
+             var obj_confirm_password = document.getElementById('confirm-password');
+
+            // Lấy ra đối tượng ghi chú thêm
+            var obj_note = document.getElementById('note');
+            var note = obj_note.value;
+
+            var error = '';
+            // Xử lý validate cho form yêu cầu đề bài
+
+            // Tạo biến regex để kiểm tra email
+            var regex_email = /^[a-zA-Z0-9_-]{1,}@([a-zA-Z0-9_]{1,}(\.){1})([a-z A-Z0-9\.]{0,})$/; // miền: cho phép chữ, chữ hoa, số, dấu gạch ngang
+            if ( name == '' ) {
+                error = 'Name ko dc để trống';
+                // Khi có lỗi thì focus con trỏ vào chuột vào input đó, để tiện cho user 
+                obj_name.focus();
+            }
+            else if (age == '' || isNaN(age)) {
+                error = ' Không dc để trong age hoặc phải nhập số';
+                obj_age.focus();    
+            }
+            else if (!regex_email.test(email)) {
+                error = 'Phải nhập đúng định dạng email';
+                obj_email.focus();
+            }
+            else if (count_checked_radio == 2) 
+            {
+                error = ' Phải chọn giới tính';
+                obj_gender_male.focus();
+
+            }
+            else if (true == 'none') {
+                error = ' Phải chọn khóa học';
+                obj_couse.focus();
+            }
+            else if (password == '' || obj_confirm_password == '') {
+                error = ' Password ko dc để trống';
+                obj_password.focus();
+            }
+             else if (password != confirm_password) {
+                 error = ' Password phải cùng nhau';
+                 obj_confirm_password.focus();
+             }
+            
+            // Hiển thị lỗi ra thẻ h3 đang chờ
+            document.getElementById('error').innerHTML = error;
+            event.preventDefault();
+        });
+    </script>
+</body>
+
+</html>

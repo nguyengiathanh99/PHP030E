@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giao diện đăng ký tài khoản- register.html</title>
+    <link rel="stylesheet" href="style2.css">
+    <script>
+        var obj_form = document.getElementById('form');
+        obj_form = addEventListener('submit', function () {
+
+            // Kiểm tra tuổi
+            obj_age = document.getElementById('age');
+            var age = obj_age.value;
+            var error = '';
+
+            // Kiểm tra Email
+            obj_email = document.getElementById('email');
+            var email = obj_email.value;
+            var regex_email = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+
+            // Kiểm tra nhập lại mật khẩu
+            var obj_confirm_password = document.getElementById('confirm-password');
+
+            if (age == '' || isNaN(age)) {
+                error = 'Bắt buộc phải nhập tuổi và phải là số';
+                obj_age.focus();
+            }
+            else if (password != confirm_password) {
+                error = ' Password phải cùng nhau';
+                obj_confirm_password.focus();
+            }
+            else if (!regex_email.test(email)) {
+                error = 'Phải nhập đúng  email';
+                obj_email.focus();
+            }
+
+            //  Hiển thị ra màn hình
+            document.getElementById('error').innerHTML = error;
+            event.preventDefault();
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <div class="logo">
+            <img src="images/logo.png" alt="Itiplus">
+        </div>
+        <div id="header" class="bg-dark">
+            <div class="menu">
+                <ul>
+                    <li><a href="bai1.html">Trang chủ</a></li>
+                    <li><a href="bai2.html">Đăng ký tài khoản</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="main">
+            <div class="form-dk">
+                <p id="error" style="color: red;"></p>
+                <h2> Form đăng ký tài khoản </h2>
+                <form action="" method="post" id="form">
+                    <table>
+                        <tr>
+                            <td> Họ và tên: <span>*</span></td>
+                            <td>
+                                <input type="text" id="name">
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <td> Tuổi:<span>*</span></td>
+                            <td>
+                                <input type="text" id="age">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Địa chỉ Email:<span>*</span></td>
+                            <td>
+                                <input type="text" id="email">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Chọn khóa học:<span>*</span></td>
+                            <td>
+                                <select name="" id="course">
+                                    <option value="none">--Vui lòng chọn--</option>
+                                    <option value="PHP">Lập trình PHP</option>
+                                    <option value="Java">Lập trình Java</option>
+                                    <option value="C">Lập trình C</option>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Mật khẩu:<span>*</span></td>
+                            <td>
+                                <input type="password" id="password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Nhập lại mật khẩu: <span>*</span></td>
+                            <td>
+                                <input type="password" id="confirm-password">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> Ghi chú thêm: </td>
+                            <td>
+                                <textarea id="note" cols="20" rows="2"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Gửi thông tin">
+                                <input type="reset" value="Xóa thông tin">
+                            </td>
+                        </tr>
+
+                    </table>
+                </form>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="bg-dark">
+                <div class="content-footer">
+                    Bản quyền thuộc về ITPluss Academy
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

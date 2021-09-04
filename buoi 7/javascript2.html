@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Hàm chuyên dùng để debug
+        // console.log('abc');
+
+        // Hàm alert
+        // alert('123')
+
+        // Hàm prompt: nhập liệu
+        //  var a = prompt ('Nhập số a =');
+
+        // // Hàm confirm
+        // var confirm = confirm ('Bạn có muốn xóa hay ko');
+
+    //    var obj = document.getElementById('id');
+    //    obj.value, obj.name, obj.placeholder
+
+        // obj.innerHTML = 'abc';
+        // obj.innerText = 'abc';
+
+        // window.location = 'http://google.vn';
+
+        // Sự kiện trong javascript
+
+    </script>
+    <p id="p-click" >
+        CLick vào thẻ p để show alert
+    </p>
+    <script type="text/javascript">
+        var obj_p = document.getElementById('p-click');
+        console.log(obj_p);
+        // GỌi sự kiện click trên đối tượng vừa lấy được
+        //  Hàm handle click đóng vai trò là 1 hàm caall back sẽ được gọi sự kiện click xảy ra xong
+        function handleClick() {
+            alert('123');
+        }
+        // // Hàm callback
+        // obj_p.addEventListener('click' , handleClick)
+         
+         // Viết thẳng code vào call back
+         obj_p.addEventListener('click' ,
+          function() {
+          alert('123');
+         });
+    </script>
+</body>
+
+</html>

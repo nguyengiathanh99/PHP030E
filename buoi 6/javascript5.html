@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Thuộc tính isNaN </title>
+    <script>
+        function check() {
+            var m = document.getElementById("mobile").value;
+            if (isNaN(m) == true)
+            document.getElementById("msbMobile").innerHTML = "Invalid mobile number";
+            else 
+            document.getElementById("msbMobile").innerHTML =  " Mobile number is valid";
+        }
+    </script>
+</head>
+<body>
+    Mobile 
+        <input type="text"  id="mobile">
+        <label id="msbMobile"></label>
+        <br>
+        <input type="button" value="Check" onclick="check();">
+</body>
+</html>

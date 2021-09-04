@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Position</title>
+    <style>
+        .block1, .block2, .block3, .block4 {
+            width: 100px;
+            height: 50px;
+            border: solid 1px black;
+            position: absolute;
+        }
+        .block1 {
+            top: 50px;
+            left: 50px;
+        }
+        .block2 {
+            top: 50px;
+            right: 50px;
+        }
+        .block3 {
+            bottom: 50px;
+            left: 50px;
+        }
+        .block4 {
+            bottom: 50px;
+            right: 50px;
+        }
+        .container {
+            width: 400px;
+            height: 300px;
+            border: solid 1px green;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="block1"> Khối 1 </div>
+        <div class="block2"> Khối 2 </div>
+        <div class="block3"> Khối 3 </div>
+        <div class="block4"> Khối 4 </div>
+    </div>
+</body>
+</html>
